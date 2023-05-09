@@ -29,7 +29,23 @@
       android:id="@+id/navigationView"
        android:layout_width="wrap_content"
        android:layout_height="match_parent"
-      android:layout_gravity="start"/>
+      android:layout_gravity="start">
+
+      <TextView
+          android:id="@+id/Assignment"
+          android:layout_width="200dp"
+          android:layout_height="50dp"
+          android:layout_margin="20dp"
+          android:gravity="center"
+          android:background="@drawable/rounded_corner"
+          android:text="Присваивание"
+          android:textColor="@color/white"
+          android:orientation="horizontal"
+
+          />
+
+
+   </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
