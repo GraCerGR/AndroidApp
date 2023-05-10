@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".Main">
 
-   <FrameLayout
+<!--   <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/secondActivityContainer"
        android:layout_width="match_parent"
-       android:layout_height="match_parent" />
+       android:layout_height="match_parent"/>-->
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -28,6 +28,12 @@
       app:layout_constraintTop_toTopOf="parent"></LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <LinearLayout
+       android:id="@+id/secondActivityContainer"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical" />
 
 
    <com.google.android.material.navigation.NavigationView
