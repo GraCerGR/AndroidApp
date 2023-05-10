@@ -7,11 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".Main">
 
+   <FrameLayout
+       android:id="@+id/secondActivityContainer"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" />
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-   <LinearLayout
+ <!--  <LinearLayout
        android:id="@+id/layoutToolBar"
        android:layout_width="match_parent"
        android:layout_height="?actionBarSize"
@@ -20,7 +25,7 @@
       android:gravity="center_vertical"
       android:paddingStart="15dp"
       android:paddingEnd="15dp"
-      app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+      app:layout_constraintTop_toTopOf="parent"></LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -31,7 +36,7 @@
        android:layout_height="match_parent"
       android:layout_gravity="start">
 
-      <TextView
+      <Button
           android:id="@+id/Assignment"
           android:layout_width="200dp"
           android:layout_height="50dp"
@@ -41,8 +46,19 @@
           android:text="Присваивание"
           android:textColor="@color/white"
           android:orientation="horizontal"
-
           />
+
+      <ScrollView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+      <LinearLayout
+          android:id="@+id/container"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:orientation="vertical">
+      </LinearLayout>
+   </ScrollView>
 
 
    </com.google.android.material.navigation.NavigationView>
