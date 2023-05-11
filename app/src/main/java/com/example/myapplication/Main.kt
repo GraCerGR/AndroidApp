@@ -34,6 +34,12 @@ class Main : AppCompatActivity() {
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
 
         }
+        var calculate = findViewById<Button>(R.id.Calculate)
+        calculate.setOnClickListener {
+
+            /*Код вычисления*/
+
+        }
     }
 }
 

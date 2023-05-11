@@ -29,6 +29,7 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+
    <LinearLayout
        android:id="@+id/secondActivityContainer"
        android:layout_width="match_parent"
@@ -54,6 +55,16 @@
           android:orientation="horizontal"
           />
 
+       <Button
+           android:id="@+id/Calculate"
+           android:layout_width="200dp"
+           android:layout_height="50dp"
+           android:layout_marginTop="600dp"
+           android:gravity="center"
+           android:text="Вычислить"
+           android:layout_marginStart="30dp"
+           android:orientation="horizontal" />
+
       <ScrollView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content">
@@ -67,7 +78,7 @@
    </ScrollView>
 
 
-   </com.google.android.material.navigation.NavigationView>
 
+   </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
