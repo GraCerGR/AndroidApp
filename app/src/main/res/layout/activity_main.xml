@@ -30,11 +30,11 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-   <LinearLayout
-       android:id="@+id/secondActivityContainer"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assignmentRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navigationView" />
 
 
    <com.google.android.material.navigation.NavigationView
@@ -61,6 +61,7 @@
            android:layout_height="50dp"
            android:layout_marginTop="600dp"
            android:gravity="center"
+           android:background="@color/blue"
            android:text="Вычислить"
            android:layout_marginStart="30dp"
            android:orientation="horizontal" />
@@ -69,12 +70,12 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content">
 
-      <LinearLayout
+<!--      <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/container"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:orientation="vertical">
-      </LinearLayout>
+      </androidx.recyclerview.widget.RecyclerView>-->
    </ScrollView>
 
 
