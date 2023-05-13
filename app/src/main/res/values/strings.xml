@@ -7,6 +7,8 @@
     <string name="name">Название</string>
     <string name="value">Значение</string>
     <string name="sizeArray">Размер</string>
+    <string name="variable">Переменная</string>
+    <string name="assignment">Присваивание</string>
 
     <string-array name="thins">
         <item>>=</item>
