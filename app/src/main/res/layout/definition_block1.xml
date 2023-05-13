@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_margin="5dp"
-    android:id="@+id/Assignment">
+    android:id="@+id/Definition">
 
     <RelativeLayout
         android:id="@+id/VarBlock"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue"
+        android:background="@drawable/rounded_corner_definition"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="34dp">
 

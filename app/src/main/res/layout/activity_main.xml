@@ -31,7 +31,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/assignmentRecyclerView"
+        android:id="@+id/DefinitionRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/navigationView" />
@@ -44,27 +44,28 @@
       android:layout_gravity="start">
 
       <Button
-          android:id="@+id/Assignment"
+          android:id="@+id/Definition"
           android:layout_width="200dp"
           android:layout_height="50dp"
           android:layout_margin="20dp"
           android:gravity="center"
-          android:background="@drawable/rounded_corner"
-          android:text="Присваивание"
+          android:background="@drawable/rounded_corner_definition"
+          android:text="Определение"
           android:textColor="@color/white"
           android:orientation="horizontal"
           />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|bottom">
        <Button
            android:id="@+id/Calculate"
-           android:layout_width="200dp"
+           android:layout_width="match_parent"
            android:layout_height="50dp"
-           android:layout_marginTop="600dp"
-           android:gravity="center"
-           android:background="@color/blue"
+           android:background="@color/colorAccent"
            android:text="Вычислить"
-           android:layout_marginStart="30dp"
            android:orientation="horizontal" />
+   </LinearLayout>
 
       <ScrollView
           android:layout_width="wrap_content"

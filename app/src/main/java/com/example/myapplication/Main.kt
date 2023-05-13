@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,17 +18,18 @@ class Main : AppCompatActivity() {
     private lateinit var container: RecyclerView
     private lateinit var adapter: AssignmentAdapter
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        container = findViewById<RecyclerView>(R.id.assignmentRecyclerView)
+        container = findViewById<RecyclerView>(R.id.DefinitionRecyclerView)
         container.layoutManager = LinearLayoutManager(this)
         adapter = AssignmentAdapter()
         container.adapter = adapter
         val navigationView = findViewById<com.google.android.material.navigation.NavigationView>(R.id.navigationView)
 
-        val assignmentButton = findViewById<Button>(R.id.Assignment)
+        val assignmentButton = findViewById<Button>(R.id.Definition)
 
         assignmentButton.setOnClickListener {
             // Добавление нового элемента в список
@@ -55,7 +57,7 @@ class AssignmentAdapter : RecyclerView.Adapter<AssignmentAdapter.AssignmentViewH
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssignmentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.assignment_block1, parent, false)
+        val itemView = inflater.inflate(R.layout.definition_block1, parent, false)
         return AssignmentViewHolder(itemView)
     }
 
