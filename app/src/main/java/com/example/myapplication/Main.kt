@@ -33,6 +33,9 @@ class Main : AppCompatActivity() {
 
         val assignmentButton = findViewById<Button>(R.id.Assignment)
         val definitionButton = findViewById<Button>(R.id.Definition)
+        val ifButton = findViewById<Button>(R.id.If)
+        val beginButton = findViewById<Button>(R.id.Begin)
+        val endButton = findViewById<Button>(R.id.End)
 
         assignmentButton.setOnClickListener {
             // Устанавливаем layoutId для адаптера как R.layout.assignment_block1
@@ -42,11 +45,34 @@ class Main : AppCompatActivity() {
         }
 
         definitionButton.setOnClickListener {
-            // Устанавливаем layoutId для адаптера как R.layout.definition_block1
+            // Устанавливаем layoutId для адаптера
             adapter.setLayoutId(R.layout.definition_block1)
             adapter.addItem()
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
+
+        ifButton.setOnClickListener {
+            // Устанавливаем layoutId для адаптера
+            adapter.setLayoutId(R.layout.if_block1)
+            adapter.addItem()
+            drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
+        }
+
+        beginButton.setOnClickListener {
+            // Устанавливаем layoutId для адаптера как R.layout.assignment_block1
+            adapter.setLayoutId(R.layout.begin_block1)
+            adapter.addItem()
+            drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
+        }
+
+        endButton.setOnClickListener {
+            // Устанавливаем layoutId для адаптера как R.layout.assignment_block1
+            adapter.setLayoutId(R.layout.end_block1)
+            adapter.addItem()
+            drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
+        }
+
+
 
         val calculateButton = findViewById<Button>(R.id.Calculate)
         calculateButton.setOnClickListener {

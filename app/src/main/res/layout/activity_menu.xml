@@ -7,7 +7,7 @@
     tools:context=".Menu">
 
     <Button
-        android:id="@+id/Begin"
+        android:id="@+id/BeginProgram"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -28,6 +28,6 @@
         android:text="Настройки"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Begin" />
+        app:layout_constraintTop_toBottomOf="@+id/BeginProgram" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
