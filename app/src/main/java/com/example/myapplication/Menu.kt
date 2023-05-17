@@ -1,16 +1,18 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
 class Menu : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        var buttonProgramming = findViewById<Button>(R.id.Begin)
+        var buttonProgramming = findViewById<Button>(R.id.BeginProgram)
         buttonProgramming.setOnClickListener {
             val menuIntent = Intent(this, Main::class.java)
             startActivity(menuIntent)

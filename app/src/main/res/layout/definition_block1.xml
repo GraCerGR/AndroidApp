@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_margin="5dp"
-    android:id="@+id/Assignment">
+    android:id="@+id/Definition">
 
     <RelativeLayout
         android:id="@+id/VarBlock"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rounded_corner_assignment"
+        android:background="@drawable/rounded_corner_definition"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="34dp">
 
@@ -28,7 +28,7 @@
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="56dp"
             android:gravity="center"
-            android:text="@string/variable"
+            android:text="@string/status"
             android:textAlignment="center"
             android:textColor="@color/black" />
 
@@ -45,7 +45,7 @@
             android:layout_marginEnd="220dp"
             android:layout_marginBottom="56dp"
             android:gravity="center"
-            android:text="@string/variable"
+            android:text="@string/type"
             android:textAlignment="center"
             android:textColor="@color/black" />
 
@@ -72,18 +72,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/equalSign"
-            android:layout_width="wrap_content"
-            android:layout_height="49dp"
-            android:layout_alignEnd="@+id/editLeft"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="-4dp"
-            android:layout_marginBottom="-8dp"
-            android:text="="
-            android:textColor="@color/black"
-            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/editRight"
