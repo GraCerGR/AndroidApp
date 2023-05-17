@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 
 class Main : AppCompatActivity() {
 
+    private lateinit var inputEditText: EditText
     private lateinit var container: LinearLayout
     private var draggedView: View? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,8 @@ class Main : AppCompatActivity() {
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
 
         }
+        inputEditText = findViewById(R.id.editRight)
+
         var calculate = findViewById<Button>(R.id.Calculate)
         calculate.setOnClickListener {
 
