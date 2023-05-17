@@ -88,7 +88,7 @@ class UniversalAdapter(private var layoutId: Int) : RecyclerView.Adapter<Univers
     ItemTouchHelperAdapter {
 
     private val items = mutableListOf<Any>()
-
+ //ioiojijo;ij
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(layoutId, parent, false)
