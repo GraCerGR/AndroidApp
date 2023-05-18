@@ -1,5 +1,8 @@
 package com.example.myapplication
 
+import java.util.Collections
+
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +14,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.DiffUtil
 
 
 class Main : AppCompatActivity() {
@@ -26,8 +31,9 @@ class Main : AppCompatActivity() {
         container = findViewById<RecyclerView>(R.id.DefinitionRecyclerView)
         container.layoutManager = LinearLayoutManager(this)
 
-        adapter = UniversalAdapter(R.layout.definition_block1) // Создание экземпляра адаптера
+        adapter = UniversalAdapter()
         container.adapter = adapter
+
         val navigationView = findViewById<com.google.android.material.navigation.NavigationView>(R.id.navigationView)
         val drawerLayout = findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawerLayout) // Получение ссылки на DrawerLayout
 
@@ -39,108 +45,89 @@ class Main : AppCompatActivity() {
         val outputButton = findViewById<Button>(R.id.Output)
 
         assignmentButton.setOnClickListener {
-            // Устанавливаем layoutId для адаптера как R.layout.assignment_block1
-            adapter.setLayoutId(R.layout.assignment_block1)
-            adapter.addItem()
+            adapter.addItem(R.layout.assignment_block1)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         definitionButton.setOnClickListener {
-            // Устанавливаем layoutId для адаптера
-            adapter.setLayoutId(R.layout.definition_block1)
-            adapter.addItem()
+            adapter.addItem(R.layout.definition_block1)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         ifButton.setOnClickListener {
-            // Устанавливаем layoutId для адаптера
-            adapter.setLayoutId(R.layout.if_block1)
-            adapter.addItem()
+            adapter.addItem(R.layout.if_block1)
+            adapter.addItem(R.layout.begin_block1)
+            adapter.addItem(R.layout.end_block1)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         beginButton.setOnClickListener {
-            // Устанавливаем layoutId для адаптера как R.layout.assignment_block1
-            adapter.setLayoutId(R.layout.begin_block1)
-            adapter.addItem()
+            adapter.addItem(R.layout.begin_block1)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         endButton.setOnClickListener {
-            // Устанавливаем layoutId для адаптера как R.layout.assignment_block1
-            adapter.setLayoutId(R.layout.end_block1)
-            adapter.addItem()
+            adapter.addItem(R.layout.end_block1)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         outputButton.setOnClickListener {
-            // Устанавливаем layoutId для адаптера как R.layout.assignment_block1
-            adapter.setLayoutId(R.layout.output_block1)
-            adapter.addItem()
+            adapter.addItem(R.layout.output_block1)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
-
-
 
         val calculateButton = findViewById<Button>(R.id.Calculate)
         calculateButton.setOnClickListener {
             // Код для вычислений
         }
+
         val itemTouchHelper = ItemTouchHelper(SimpleItemTouchHelperCallback(adapter))
         itemTouchHelper.attachToRecyclerView(container)
     }
 }
 
-// Создайте класс Adapter для RecyclerView
-class UniversalAdapter(private var layoutId: Int) : RecyclerView.Adapter<UniversalAdapter.ViewHolder>(),
-    ItemTouchHelperAdapter {
+// класс Adapter для RecyclerView
+class UniversalAdapter : ListAdapter<Any, UniversalAdapter.ViewHolder>(DIFF_CALLBACK), ItemTouchHelperAdapter {
 
-    private val items = mutableListOf<Any>()
- //ioiojijo;ij
-    //ppppp
+    private val items = mutableListOf<Int>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(layoutId, parent, false)
+        val itemView = inflater.inflate(viewType, parent, false)
         return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // Здесь вы можете настроить отображение данных в каждом элементе списка
+        // Здесь вы можете настроить отображение данных в каждом элементе списка (без данного блока Адаптер не создаётся)
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    fun addItem() {
-        // Добавление нового элемента в список
-        items.add(Any()) // Здесь вы можете использовать свои собственные данные
+    override fun getItemViewType(position: Int): Int {
+        return items[position]
+    }
+
+    fun addItem(layoutId: Int) {
+        items.add(layoutId)
         notifyItemInserted(items.size - 1)
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        // Перемещение элемента в списке
-        val item = items.removeAt(fromPosition)
-        items.add(toPosition, item)
+        Collections.swap(items, fromPosition, toPosition)
         notifyItemMoved(fromPosition, toPosition)
     }
 
     override fun onItemDismiss(position: Int) {
-        // Удаление элемента из списка
         items.removeAt(position)
         notifyItemRemoved(position)
-    }
-
-    fun setLayoutId(newLayoutId: Int) {
-        layoutId = newLayoutId
-        notifyDataSetChanged()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
 
-class SimpleItemTouchHelperCallback(adapter: ItemTouchHelperAdapter) :
-    ItemTouchHelper.Callback() {
+class SimpleItemTouchHelperCallback(adapter: ItemTouchHelperAdapter) : ItemTouchHelper.Callback() {
     private val mAdapter: ItemTouchHelperAdapter
 
     init {
@@ -160,10 +147,8 @@ class SimpleItemTouchHelperCallback(adapter: ItemTouchHelperAdapter) :
         val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
         return makeMovementFlags(dragFlags, swipeFlags)
     }
-    override fun onMove(
-        recyclerView: RecyclerView, viewHolder: ViewHolder,
-        target: ViewHolder
-    ): Boolean {
+
+    override fun onMove(recyclerView: RecyclerView, viewHolder: ViewHolder, target: ViewHolder): Boolean {
         mAdapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
         return true
     }
@@ -177,4 +162,14 @@ interface ItemTouchHelperAdapter {
     fun onItemMove(fromPosition: Int, toPosition: Int)
     fun onItemDismiss(position: Int)
 }
-
+//являются ли oldItem и newItem одним и тем же объектом
+private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Any>() {
+    override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
+        // являются ли oldItem и newItem одним и тем же объектом
+        return oldItem === newItem
+    }
+    override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
+        // Возвращаем true, чтобы указать, что содержимое элементов всегда считается одинаковым (без данного класса не создаётся)
+        return true
+    }
+}
