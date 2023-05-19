@@ -4,10 +4,6 @@ import java.util.EmptyStackException
 import java.util.Stack
 import kotlin.math.pow
 
-/**
- * Функция счета.
- * Принимает кучу данных и выражение, возвращает двойку: (Статус, Значение)
- **/
 fun arithmetics(mem: Memory, expression: String): Pair<String, Int> {
     val exp = expression.replace("\\s".toRegex(), "")
     if (exp.isEmpty()) {
