@@ -6,9 +6,9 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.scripts.block
+import com.example.myapplication.scripts.Block
 
-class blocksHandler(private val listBlocks:ArrayList<block>) : RecyclerView.Adapter<blocksHandler.ViewHolder>() {
+class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adapter<BlocksHandler.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textType: TextView = itemView.findViewById(R.id.textType)
         val textStatus: TextView = itemView.findViewById(R.id.textStatus)
@@ -29,7 +29,7 @@ class blocksHandler(private val listBlocks:ArrayList<block>) : RecyclerView.Adap
         TODO("Not yet implemented")
     }
 
-    fun addBlock(block : block){
+    fun addBlock(block : Block){
         listBlocks.add(block)
         notifyItemInserted(listBlocks.size-1)
     }

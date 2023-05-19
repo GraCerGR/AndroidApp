@@ -8,7 +8,7 @@ import kotlin.math.pow
  * Функция счета.
  * Принимает кучу данных и выражение, возвращает двойку: (Статус, Значение)
  **/
-fun arithmetics(mem: memory, expression: String): Pair<String, Int> {
+fun arithmetics(mem: Memory, expression: String): Pair<String, Int> {
     val exp = expression.replace("\\s".toRegex(), "")
     if (exp.isEmpty()) {
         return Pair(emptyInput(), 0)
@@ -162,7 +162,7 @@ private fun lineCheck(string: String): Pair<String, Int> {
     return Pair(ok(), 1)
 }
 
-private fun preparingExpression(mem: memory, expression: String): Pair<String, Int> {
+private fun preparingExpression(mem: Memory, expression: String): Pair<String, Int> {
     var exp = expression
     var preparedExpression = String()
 

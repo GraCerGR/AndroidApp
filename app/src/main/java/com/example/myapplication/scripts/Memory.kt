@@ -1,6 +1,6 @@
 package com.example.myapplication.scripts
 
-class memory {
+class Memory {
     private var hashTable : MutableMap<String, Int> = mutableMapOf()
 
     /**
