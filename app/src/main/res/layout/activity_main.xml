@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".Main">
 
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image" />
+
     <TextView
         android:id="@+id/BeginningText"
         android:layout_width="match_parent"
@@ -57,7 +64,8 @@
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start">
+        android:layout_gravity="start"
+        android:background="@drawable/image2">
 
         <Button
             android:id="@+id/Definition"
