@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,17 +23,23 @@ class Main : AppCompatActivity() {
 
     private lateinit var container: RecyclerView
     private lateinit var adapter: UniversalAdapter
+    private lateinit var beginningText: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        beginningText = findViewById(R.id.BeginningText) // Инициализация beginningText
+
         container = findViewById<RecyclerView>(R.id.DefinitionRecyclerView)
         container.layoutManager = LinearLayoutManager(this)
 
         adapter = UniversalAdapter()
+        adapter.setBeginningText(beginningText) // Передаем ссылку на beginningText в адаптер
         container.adapter = adapter
+
+        adapter.updateBeginningTextVisibility()
 
         val navigationView = findViewById<com.google.android.material.navigation.NavigationView>(R.id.navigationView)
         val drawerLayout = findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawerLayout) // Получение ссылки на DrawerLayout
@@ -84,12 +91,14 @@ class Main : AppCompatActivity() {
         val itemTouchHelper = ItemTouchHelper(SimpleItemTouchHelperCallback(adapter))
         itemTouchHelper.attachToRecyclerView(container)
     }
+
 }
 
 // класс Adapter для RecyclerView
 class UniversalAdapter : ListAdapter<Any, UniversalAdapter.ViewHolder>(DIFF_CALLBACK), ItemTouchHelperAdapter {
 
     private val items = mutableListOf<Int>()
+    private lateinit var beginningText: TextView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -111,7 +120,8 @@ class UniversalAdapter : ListAdapter<Any, UniversalAdapter.ViewHolder>(DIFF_CALL
 
     fun addItem(layoutId: Int) {
         items.add(layoutId)
-        notifyItemInserted(items.size - 1)
+        notifyDataSetChanged()
+        updateBeginningTextVisibility()
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
@@ -122,6 +132,20 @@ class UniversalAdapter : ListAdapter<Any, UniversalAdapter.ViewHolder>(DIFF_CALL
     override fun onItemDismiss(position: Int) {
         items.removeAt(position)
         notifyItemRemoved(position)
+        updateBeginningTextVisibility() // Обновляем видимость beginningText после удаления элемента
+    }
+
+    fun setBeginningText(textView: TextView) {
+        beginningText = textView // Устанавливаем ссылку на beginningText
+        updateBeginningTextVisibility() // Вызываем метод для установки видимости beginningText
+    }
+
+    fun updateBeginningTextVisibility() {
+        if (items.isEmpty()) {
+            beginningText.visibility = View.VISIBLE
+        } else {
+            beginningText.visibility = View.GONE
+        }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
