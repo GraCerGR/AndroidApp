@@ -4,6 +4,7 @@ import java.util.Collections
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,19 +18,23 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.databinding.ActivityMenuBinding
 
 
 class Main : AppCompatActivity() {
 
     private lateinit var container: RecyclerView
     private lateinit var adapter: UniversalAdapter
-    private lateinit var beginningText: TextView
+    lateinit var bindingClass: ActivityMenuBinding
+    lateinit var beginningText: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+
+        setContentView(R.layout.activity_main)
         beginningText = findViewById(R.id.BeginningText) // Инициализация beginningText
 
         container = findViewById<RecyclerView>(R.id.DefinitionRecyclerView)
@@ -42,7 +47,7 @@ class Main : AppCompatActivity() {
         adapter.updateBeginningTextVisibility()
 
         val navigationView = findViewById<com.google.android.material.navigation.NavigationView>(R.id.navigationView)
-        val drawerLayout = findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawerLayout) // Получение ссылки на DrawerLayout
+        val drawerLayout = findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawer) // Получение ссылки на DrawerLayout
 
         val assignmentButton = findViewById<Button>(R.id.Assignment)
         val definitionButton = findViewById<Button>(R.id.Definition)
@@ -52,29 +57,29 @@ class Main : AppCompatActivity() {
         val outputButton = findViewById<Button>(R.id.Output)
 
         assignmentButton.setOnClickListener {
-            adapter.addItem(R.layout.assignment_block1)
+            adapter.addItem(R.layout.assignment_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         definitionButton.setOnClickListener {
-            adapter.addItem(R.layout.definition_block1)
+            adapter.addItem(R.layout.definition_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         ifButton.setOnClickListener {
-            adapter.addItem(R.layout.if_block1)
-            adapter.addItem(R.layout.begin_block1)
-            adapter.addItem(R.layout.end_block1)
+            adapter.addItem(R.layout.if_block)
+            adapter.addItem(R.layout.begin_block)
+            adapter.addItem(R.layout.end_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         beginButton.setOnClickListener {
-            adapter.addItem(R.layout.begin_block1)
+            adapter.addItem(R.layout.begin_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         endButton.setOnClickListener {
-            adapter.addItem(R.layout.end_block1)
+            adapter.addItem(R.layout.end_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
@@ -91,7 +96,6 @@ class Main : AppCompatActivity() {
         val itemTouchHelper = ItemTouchHelper(SimpleItemTouchHelperCallback(adapter))
         itemTouchHelper.attachToRecyclerView(container)
     }
-
 }
 
 // класс Adapter для RecyclerView
