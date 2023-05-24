@@ -41,10 +41,12 @@ class Main : AppCompatActivity() {
                 val intent = Intent(this@Main, ActivityHandler::class.java)
                 startActivity(intent)
             }
+            /*
             Settings.setOnClickListener{
                 val intent = Intent(this@Main, Settings::class.java)
                 startActivity(intent)
-            }
+            }*/
+
             exit.setOnClickListener{
                 finishAffinity()
             }

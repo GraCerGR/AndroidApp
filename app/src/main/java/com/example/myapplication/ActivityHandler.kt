@@ -17,7 +17,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.ActivityProjectBinding
 import com.example.myapplication.scripts.Assigneing
 import com.example.myapplication.scripts.Begin
 import com.example.myapplication.scripts.Block
@@ -29,6 +28,7 @@ import com.example.myapplication.scripts.Exit
 import com.example.myapplication.scripts.connectBlocks
 import com.example.myapplication.scripts.ok
 import com.example.myapplication.scripts.programFinish
+import com.example.myapplication.databinding.ActivityProjectBinding
 import java.util.Collections
 
 @Suppress("NAME_SHADOWING")
