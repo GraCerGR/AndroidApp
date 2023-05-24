@@ -4,6 +4,7 @@ import java.util.Collections
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,16 +17,41 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.databinding.ActivityMenuBinding
 
 
 class Main : AppCompatActivity() {
 
-    private lateinit var container: RecyclerView
-    private lateinit var adapter: UniversalAdapter
+    //private lateinit var container: RecyclerView
+    //private lateinit var adapter: UniversalAdapter
+    lateinit var bindingClass: ActivityMenuBinding
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        bindingClass = ActivityMenuBinding.inflate(layoutInflater)
+        setContentView(bindingClass.root)
+        supportActionBar?.title = ""
+        init()
+    }
+    private fun init(){
+        bindingClass.apply{
+            BeginProgram.setOnClickListener{
+                val intent = Intent(this@Main, ActivityHandler::class.java)
+                startActivity(intent)
+            }
+            Settings.setOnClickListener{
+                val intent = Intent(this@Main, Settings::class.java)
+                startActivity(intent)
+            }
+            exit.setOnClickListener{
+                finishAffinity()
+            }
+        }
+    }
+}
+/*
         setContentView(R.layout.activity_main)
 
         container = findViewById<RecyclerView>(R.id.DefinitionRecyclerView)
@@ -172,4 +198,4 @@ private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Any>() {
         // Возвращаем true, чтобы указать, что содержимое элементов всегда считается одинаковым (без данного класса не создаётся)
         return true
     }
-}
+}*/

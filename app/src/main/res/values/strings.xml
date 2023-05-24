@@ -13,6 +13,18 @@
     <string name="expression2">Выражение №2</string>
     <string name="begin">Начало</string>
     <string name="end">Конец</string>
+    <string name="menu_run" />
+    <string name="def_var">def var</string>
+    <string name="buttonundefinedvar">buttonUndefinedVar</string>
+    <string name="buttonassignment">buttonAssignment</string>
+    <string name="buttondefinedarray">buttonDefinedArray</string>
+    <string name="buttonundefinedarray">buttonUndefinedArray</string>
+    <string name="buttonconditionif">buttonConditionIf</string>
+    <string name="buttonconditionifelse">buttonConditionIfElse</string>
+    <string name="buttoncyclewhile">buttonCycleWhile</string>
+    <string name="buttonconsoleoutput">buttonConsoleOutput</string>
+    <string name="buttonconsoleinputone">buttonConsoleInputOne</string>
+    <string name="textconsole">textConsole</string>
 
     <string-array name="thins">
         <item>></item>
