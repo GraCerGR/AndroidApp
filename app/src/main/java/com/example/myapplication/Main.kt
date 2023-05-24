@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,47 +24,30 @@ import com.example.myapplication.databinding.ActivityMenuBinding
 
 class Main : AppCompatActivity() {
 
-    //private lateinit var container: RecyclerView
-    //private lateinit var adapter: UniversalAdapter
+    private lateinit var container: RecyclerView
+    private lateinit var adapter: UniversalAdapter
     lateinit var bindingClass: ActivityMenuBinding
+    lateinit var beginningText: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindingClass = ActivityMenuBinding.inflate(layoutInflater)
-        setContentView(bindingClass.root)
-        supportActionBar?.title = ""
-        init()
-    }
-    private fun init(){
-        bindingClass.apply{
-            BeginProgram.setOnClickListener{
-                val intent = Intent(this@Main, ActivityHandler::class.java)
-                startActivity(intent)
-            }
-            /*
-            Settings.setOnClickListener{
-                val intent = Intent(this@Main, Settings::class.java)
-                startActivity(intent)
-            }*/
 
-            exit.setOnClickListener{
-                finishAffinity()
-            }
-        }
-    }
-}
-/*
+
         setContentView(R.layout.activity_main)
+        beginningText = findViewById(R.id.BeginningText) // Инициализация beginningText
 
         container = findViewById<RecyclerView>(R.id.DefinitionRecyclerView)
         container.layoutManager = LinearLayoutManager(this)
 
         adapter = UniversalAdapter()
+        adapter.setBeginningText(beginningText) // Передаем ссылку на beginningText в адаптер
         container.adapter = adapter
 
+        adapter.updateBeginningTextVisibility()
+
         val navigationView = findViewById<com.google.android.material.navigation.NavigationView>(R.id.navigationView)
-        val drawerLayout = findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawerLayout) // Получение ссылки на DrawerLayout
+        val drawerLayout = findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawer) // Получение ссылки на DrawerLayout
 
         val assignmentButton = findViewById<Button>(R.id.Assignment)
         val definitionButton = findViewById<Button>(R.id.Definition)
@@ -73,29 +57,29 @@ class Main : AppCompatActivity() {
         val outputButton = findViewById<Button>(R.id.Output)
 
         assignmentButton.setOnClickListener {
-            adapter.addItem(R.layout.assignment_block1)
+            adapter.addItem(R.layout.assignment_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         definitionButton.setOnClickListener {
-            adapter.addItem(R.layout.definition_block1)
+            adapter.addItem(R.layout.definition_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         ifButton.setOnClickListener {
-            adapter.addItem(R.layout.if_block1)
-            adapter.addItem(R.layout.begin_block1)
-            adapter.addItem(R.layout.end_block1)
+            adapter.addItem(R.layout.if_block)
+            adapter.addItem(R.layout.begin_block)
+            adapter.addItem(R.layout.end_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         beginButton.setOnClickListener {
-            adapter.addItem(R.layout.begin_block1)
+            adapter.addItem(R.layout.begin_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
         endButton.setOnClickListener {
-            adapter.addItem(R.layout.end_block1)
+            adapter.addItem(R.layout.end_block)
             drawerLayout.closeDrawer(navigationView) // Закрытие NavigationView
         }
 
@@ -118,6 +102,7 @@ class Main : AppCompatActivity() {
 class UniversalAdapter : ListAdapter<Any, UniversalAdapter.ViewHolder>(DIFF_CALLBACK), ItemTouchHelperAdapter {
 
     private val items = mutableListOf<Int>()
+    private lateinit var beginningText: TextView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -139,7 +124,8 @@ class UniversalAdapter : ListAdapter<Any, UniversalAdapter.ViewHolder>(DIFF_CALL
 
     fun addItem(layoutId: Int) {
         items.add(layoutId)
-        notifyItemInserted(items.size - 1)
+        notifyDataSetChanged()
+        updateBeginningTextVisibility()
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
@@ -150,6 +136,20 @@ class UniversalAdapter : ListAdapter<Any, UniversalAdapter.ViewHolder>(DIFF_CALL
     override fun onItemDismiss(position: Int) {
         items.removeAt(position)
         notifyItemRemoved(position)
+        updateBeginningTextVisibility() // Обновляем видимость beginningText после удаления элемента
+    }
+
+    fun setBeginningText(textView: TextView) {
+        beginningText = textView // Устанавливаем ссылку на beginningText
+        updateBeginningTextVisibility() // Вызываем метод для установки видимости beginningText
+    }
+
+    fun updateBeginningTextVisibility() {
+        if (items.isEmpty()) {
+            beginningText.visibility = View.VISIBLE
+        } else {
+            beginningText.visibility = View.GONE
+        }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -200,4 +200,4 @@ private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Any>() {
         // Возвращаем true, чтобы указать, что содержимое элементов всегда считается одинаковым (без данного класса не создаётся)
         return true
     }
-}*/
+}

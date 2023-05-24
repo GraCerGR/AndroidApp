@@ -23,10 +23,10 @@ class Menu : AppCompatActivity() {
     private fun init() {
         bindingClass.apply {
             BeginProgram.setOnClickListener {
-                val intent = Intent(this@Menu, ActivityHandler::class.java)
+                val intent = Intent(this@Menu, Main::class.java)
                 startActivity(intent)
             }
-            Settings.setOnClickListener {
+            SettingsButton.setOnClickListener {
                 val intent = Intent(this@Menu, Settings::class.java)
                 startActivity(intent)
             }
