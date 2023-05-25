@@ -13,4 +13,9 @@
     <color name="Menu1">#84C8FF</color>
     <color name="Menu2">#03A9F4</color>
     <color name="greenShadow">#1F2B11</color>
+    <color name="purpleShadow1">#190A33</color>
+    <color name="purpleShadow2">#130827</color>
+    <color name="orangeShadow">#4E2505</color>
+    <color name="blueShadow">#072740</color>
+    <color name="darkBlueShadow">#04635A</color>
 </resources>
