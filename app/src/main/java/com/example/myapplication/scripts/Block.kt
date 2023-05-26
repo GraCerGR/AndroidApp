@@ -4,9 +4,10 @@ package com.example.myapplication.scripts
 import com.example.myapplication.BlocksHandler
 import com.example.myapplication.ActivityHandler
 import com.example.myapplication.ConsoleHandler
+import com.example.myapplication.Main
 import java.util.Stack
 
-open class Block {
+open class Block() {
     companion object {
         var callStack: Stack<Block> = Stack()
         var mem: Memory = Memory()
@@ -31,7 +32,7 @@ open class Block {
     lateinit var adapterBlocks: BlocksHandler
     lateinit var holder: BlocksHandler.ViewHolder
     lateinit var adapterConsole: ConsoleHandler
-    var activity: ActivityHandler? = null
+    var activity: Main? = null
 
     var flagInit = true
 

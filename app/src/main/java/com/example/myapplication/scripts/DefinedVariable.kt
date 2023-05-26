@@ -1,5 +1,7 @@
 package com.example.myapplication.scripts
 
+import android.content.Context
+
 /**
  *  Блок определенной переменной.
  *  Позволяет объявить переменную и установить ей значение.

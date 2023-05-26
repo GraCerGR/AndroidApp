@@ -44,20 +44,50 @@
           app:layout_constraintTop_toTopOf="parent"></LinearLayout>&ndash;&gt;
 
     </androidx.constraintlayout.widget.ConstraintLayout>-->
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scroll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/DefinitionRecyclerView"
+        <Button
+            android:id="@+id/Calculate"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/navigationView" />
+            android:layout_height="59dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Вычислить"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollcons"
+            android:layout_width="match_parent"
+            android:layout_height="661dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/Calculate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
 
-    </ScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/blocksRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <com.google.android.material.navigation.NavigationView
@@ -66,6 +96,29 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@drawable/image2">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textConsole"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Console"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messageRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
 
         <Button
             android:id="@+id/Definition"
@@ -117,58 +170,6 @@
             android:textColor="@color/white"
             android:orientation="horizontal"
             />
-
-        <Button
-            android:id="@+id/Begin"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="470dp"
-            android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:background="@drawable/rounded_corner_begin"
-            android:text="Begin"
-            android:textColor="@color/white"
-            android:orientation="horizontal"
-            />
-
-        <Button
-            android:id="@+id/End"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="540dp"
-            android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:background="@drawable/rounded_corner_end"
-            android:text="End"
-            android:textColor="@color/white"
-            android:orientation="horizontal"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|bottom">
-            <Button
-                android:id="@+id/Calculate"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/colorAccent"
-                android:text="Вычислить"
-                android:orientation="horizontal" />
-        </LinearLayout>
-
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <!--      <androidx.recyclerview.widget.RecyclerView
-                      android:id="@+id/container"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:orientation="vertical">
-                  </androidx.recyclerview.widget.RecyclerView>-->
-        </ScrollView>
-
 
 
     </com.google.android.material.navigation.NavigationView>

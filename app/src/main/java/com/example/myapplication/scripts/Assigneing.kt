@@ -1,5 +1,7 @@
 package com.example.myapplication.scripts
 
+import android.content.Context
+
 class Assigneing : Block() {
 
     private var value: Int = 0

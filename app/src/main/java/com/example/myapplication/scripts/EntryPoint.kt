@@ -1,5 +1,7 @@
 package com.example.myapplication.scripts
 
+import android.content.Context
+
 /**
  *  Точка входа в программу.
  **/
