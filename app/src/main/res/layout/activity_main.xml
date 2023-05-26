@@ -171,6 +171,18 @@
             android:orientation="horizontal"
             />
 
+        <Button
+            android:id="@+id/Input"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="300dp"
+            android:background="@drawable/rounded_corner_output"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:text="Ввод"
+            android:textColor="@color/white" />
+
 
     </com.google.android.material.navigation.NavigationView>
 
