@@ -26,6 +26,7 @@ class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adap
             "Assignment" -> R.layout.assignment_block
             "ConditionIf" -> R.layout.if_block
             "ConsoleOutput" -> R.layout.output_block
+            "ConsoleInput" -> R.layout.console_input
             "Begin" -> R.layout.begin_block
             "End" -> R.layout.end_block
             else -> R.layout.definition_block

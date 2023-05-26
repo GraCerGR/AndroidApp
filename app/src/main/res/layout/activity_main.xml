@@ -8,6 +8,13 @@
     android:background="@drawable/image"
     tools:context=".Main">
 
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image" />
+
     <TextView
         android:id="@+id/BeginningText"
         android:layout_width="match_parent"
@@ -59,6 +66,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <ScrollView
+            android:id="@+id/scrollcons"
+            android:layout_width="match_parent"
+            android:layout_height="661dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/Calculate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/blocksRV"
@@ -70,6 +89,8 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -160,6 +181,18 @@
             android:textColor="@color/white"
             android:orientation="horizontal"
             />
+
+        <Button
+            android:id="@+id/Input"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="300dp"
+            android:background="@drawable/rounded_corner_output"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:text="Ввод"
+            android:textColor="@color/white" />
 
 
     </com.google.android.material.navigation.NavigationView>
