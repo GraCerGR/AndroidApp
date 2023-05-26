@@ -21,6 +21,24 @@ class Assigneing : Block() {
     override fun executeBlock() {
         super.executeBlock()
         initVar()
-        //TODO complete function
+        // Определяем, что за объект, которому мы будем присваивать
+        val obj = defineInput(mem, inputName)
+        name = obj.second
+        // Отсеиваем ненужное
+        if (obj.first !in listOf(tagArray(), tagVariable())) {
+            errorType = obj.first
+            return
+        }
+        // Высчитываем, что будем присваивать
+        val calculated = arithmetics(mem, inputValue)
+        errorType = calculated.first
+        if (calculated.first != ok()) return
+        value = calculated.second
+        // Присваеваем высчитанное значение либо переменной, либо элементу массива
+        when (obj.first) {
+            tagVariable() -> {
+                mem.setVariableValue(name, value)
+            }
+        }
     }
 }

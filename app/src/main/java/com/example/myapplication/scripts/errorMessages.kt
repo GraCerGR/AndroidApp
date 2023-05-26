@@ -8,6 +8,7 @@ var zeroDivision = fun(): String { return "Division by zero" }
 var indexOutOfRange = fun(): String { return "Index out of range" }
 var incorrectExpression = fun(): String { return "Incorrect expression" }
 var invalidComparator = fun(): String { return "Invalid comparator" }
+var inputError = fun(): String { return "InputError" }
 
 
 
