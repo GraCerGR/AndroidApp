@@ -158,6 +158,19 @@ private fun lineCheck(string: String): Pair<String, Int> {
     return Pair(ok(), 1)
 }
 
+
+fun defineInput(mem: Memory, expression: String): Triple<String, String, Int> {
+    val variable = "[A-Za-z]+[A-Za-z0-9_]*".toRegex()
+
+    if (variable.find(expression) != null) {
+        if (mem.isVariableExist(expression)) {
+            return Triple(tagVariable(), expression, 0)
+        }
+    }
+    return Triple(inputError(), tagNaN(), 0)
+}
+
+
 private fun preparingExpression(mem: Memory, expression: String): Pair<String, Int> {
     var exp = expression
     var preparedExpression = String()
