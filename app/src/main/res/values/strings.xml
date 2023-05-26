@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Codeblock</string>
     <string name="status">Статус</string>
     <string name="type">Тип</string>
     <string name="name">Название</string>
@@ -14,7 +12,8 @@
     <string name="begin">Начало</string>
     <string name="end">Конец</string>
     <string name="menu_run" />
-    <string name="def_var">def var</string>
+    <string name="integer"> Integer</string>
+    <string name="console"> Консоль</string>
 
     <string-array name="thins">
         <item>></item>

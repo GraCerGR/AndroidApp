@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteY="34dp">
 
         <Spinner
-            android:id="@+id/spinnerComparator2"
+            android:id="@+id/spinnerComparator"
             android:layout_width="94dp"
             android:layout_height="49dp"
             android:layout_marginStart="1dp"
@@ -30,13 +30,12 @@
             app:layout_constraintVertical_bias="0.215" />
 
         <EditText
-            android:id="@+id/editMedium2"
+            android:id="@+id/editMedium"
             android:layout_width="137dp"
             android:layout_height="48dp"
             android:ems="10"
-            android:hint="@string/sizeArray"
             android:inputType="textPersonName"
-            android:textColor="@color/dark_grey"
+            android:textColor="@color/black"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

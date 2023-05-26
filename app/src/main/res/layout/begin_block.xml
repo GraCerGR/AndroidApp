@@ -16,13 +16,12 @@
         tools:layout_editor_absoluteY="34dp">
 
         <EditText
-            android:id="@+id/editMedium3"
+            android:id="@+id/editMedium"
             android:layout_width="137dp"
             android:layout_height="48dp"
             android:ems="10"
-            android:hint="@string/sizeArray"
             android:inputType="textPersonName"
-            android:textColor="@color/dark_grey"
+            android:textColor="@color/black"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +31,22 @@
             app:layout_constraintVertical_bias="0.274" />
 
         <TextView
-            android:id="@+id/textStatus2"
+            android:id="@+id/textType"
+            android:layout_width="137dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.931"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.274" />
+
+        <TextView
+            android:id="@+id/textStatus"
             android:layout_width="208dp"
             android:layout_height="18dp"
             android:layout_alignParentStart="true"
@@ -49,7 +63,7 @@
             android:visibility="gone" />
 
         <EditText
-            android:id="@+id/editLeft2"
+            android:id="@+id/editLeft"
             android:layout_width="154dp"
             android:layout_height="59dp"
             android:layout_alignParentStart="true"
@@ -72,7 +86,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/editRight2"
+            android:id="@+id/editRight"
             android:layout_width="211dp"
             android:layout_height="58dp"
             android:layout_alignParentStart="true"
@@ -92,7 +106,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
-            android:id="@+id/spinnerComparator3"
+            android:id="@+id/spinnerComparator"
             android:layout_width="94dp"
             android:layout_height="49dp"
             android:layout_marginStart="1dp"
