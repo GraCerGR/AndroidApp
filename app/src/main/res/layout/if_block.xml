@@ -9,7 +9,92 @@
     android:background="@drawable/rounded_corner_if">
 
     <EditText
-        android:id="@+id/editLeft"
+        android:id="@+id/editMedium4"
+        android:layout_width="137dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="@string/sizeArray"
+        android:inputType="textPersonName"
+        android:textColor="@color/dark_grey"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.274" />
+
+    <TextView
+        android:id="@+id/textStatus3"
+        android:layout_width="208dp"
+        android:layout_height="18dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="Статус"
+        android:textAlignment="center"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/editLeft3"
+        android:layout_width="154dp"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="218dp"
+        android:layout_marginBottom="5dp"
+        android:ems="10"
+        android:hint="Название"
+        android:inputType="textPersonName"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editRight"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editRight3"
+        android:layout_width="211dp"
+        android:layout_height="58dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:ems="10"
+        android:hint="Значение"
+        android:inputType="textPersonName"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerComparator4"
+        android:layout_width="94dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="1dp"
+        android:entries="@array/thins"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/editLeft"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.215" />
+
+    <EditText
+        android:id="@+id/eLeft"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -26,40 +111,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
-    <EditText
-        android:id="@+id/editRight"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:ems="10"
-        android:hint="@string/expression2"
-        android:imeOptions="actionDone"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/spinnerComparator"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <EditText
-        android:id="@+id/editMedium"
-        android:layout_width="137dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="@string/size"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
-
     <Spinner
         android:id="@+id/spinnerComparator"
         android:layout_width="90dp"
@@ -69,42 +120,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editLeft"
+        app:layout_constraintStart_toEndOf="@+id/eLeft"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
-
-    <TextView
-        android:id="@+id/textStatus"
-        android:layout_width="137dp"
-        android:layout_height="48dp"
+    <EditText
+        android:id="@+id/eRight"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:ems="10"
-        android:hint="@string/size"
+        android:hint="@string/expression2"
+        android:imeOptions="actionDone"
         android:inputType="textPersonName"
         android:textColor="@color/black"
-        android:visibility="gone"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/spinnerComparator"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
-
-    <TextView
-        android:id="@+id/textType"
-        android:layout_width="137dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="@string/size"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
