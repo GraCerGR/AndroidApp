@@ -3,20 +3,13 @@ package com.example.myapplication
 import java.util.Collections
 
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
@@ -33,6 +26,7 @@ import com.example.myapplication.scripts.Assigneing
 import com.example.myapplication.scripts.Begin
 import com.example.myapplication.scripts.Block
 import com.example.myapplication.scripts.ConditionIf
+import com.example.myapplication.scripts.ConsoleInput
 import com.example.myapplication.scripts.ConsoleOutput
 import com.example.myapplication.scripts.DefinedVariable
 import com.example.myapplication.scripts.End
@@ -134,6 +128,9 @@ class Main : AppCompatActivity() {
             }
             Output.setOnClickListener{
                 createConsoleOutput()
+            }
+            Input.setOnClickListener{
+                createConsoleInput()
             }
             Calculate.setOnClickListener(){
                 runProject(listBlocks)
@@ -264,6 +261,14 @@ class Main : AppCompatActivity() {
         bindingClass.blocksRV.scrollToPosition(listBlocks.size)
         blocksHandler.saveAllData()
         blocksHandler.addBlock(ConsoleOutput())
+        listBlocks[listBlocks.size - 1].adapterConsole = consoleAdapter
+        listBlocks[listBlocks.size - 1].adapterBlocks = blocksHandler
+    }
+
+    private fun createConsoleInput() {
+        bindingClass.blocksRV.scrollToPosition(listBlocks.size)
+        blocksHandler.saveAllData()
+        blocksHandler.addBlock(ConsoleInput())
         listBlocks[listBlocks.size - 1].adapterConsole = consoleAdapter
         listBlocks[listBlocks.size - 1].adapterBlocks = blocksHandler
     }
