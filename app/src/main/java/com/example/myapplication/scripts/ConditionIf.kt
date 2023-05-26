@@ -1,4 +1,7 @@
 package com.example.myapplication.scripts
+
+import android.content.Context
+
 /**
  *  Блок условия If.
  *  Позволяет выполнять определенный набор команд при выполнении условия.

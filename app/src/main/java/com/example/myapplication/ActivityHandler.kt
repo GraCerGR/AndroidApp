@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.myapplication
 
 import android.content.Intent
@@ -8,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.ActivityProjectBinding
 import com.example.myapplication.scripts.Assigneing
 import com.example.myapplication.scripts.Begin
 import com.example.myapplication.scripts.Block
@@ -29,9 +27,9 @@ import com.example.myapplication.scripts.Exit
 import com.example.myapplication.scripts.connectBlocks
 import com.example.myapplication.scripts.ok
 import com.example.myapplication.scripts.programFinish
+import com.example.myapplication.databinding.ActivityProjectBinding
 import java.util.Collections
 
-@Suppress("NAME_SHADOWING")
 class ActivityHandler:AppCompatActivity(){
         private lateinit var listBlocks : ArrayList<Block>
         private lateinit var listMessage : ArrayList<String>
@@ -39,8 +37,9 @@ class ActivityHandler:AppCompatActivity(){
         lateinit var consoleAdapter : ConsoleHandler
         lateinit var bindingClass : ActivityProjectBinding
         lateinit var mainHandler: Handler
+        private lateinit var menu: Menu
 
-        private val updateProgramRunning = object : Runnable {
+    private val updateProgramRunning = object : Runnable {
             override fun run() {
                 kicker()
                 mainHandler.postDelayed(this, 1)
@@ -52,8 +51,10 @@ class ActivityHandler:AppCompatActivity(){
             super.onCreate(savedInstanceState)
             bindingClass = ActivityProjectBinding.inflate(layoutInflater)
             setContentView(bindingClass.root)
+            val inflater: MenuInflater = menuInflater
+            inflater.inflate(R.menu.project_menu, menu)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.title = "newProject"
+            supportActionBar?.title = "RUUUUUUUUUUUUUUUUN"
             bindingClass.blocksRV.isDrawingCacheEnabled = true
             bindingClass.blocksRV.setItemViewCacheSize(100)
 
@@ -91,7 +92,6 @@ class ActivityHandler:AppCompatActivity(){
                 buttonConsoleOutput.setOnClickListener{
                     createConsoleView()
                 }
-
             }
         }
 
@@ -130,6 +130,9 @@ class ActivityHandler:AppCompatActivity(){
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if (menu != null) {
+            this.menu = menu
+        }
         menuInflater.inflate(R.menu.project_menu, menu)
         return true
     }
@@ -143,8 +146,6 @@ class ActivityHandler:AppCompatActivity(){
                 Toast.makeText(this, "Запуск...", Toast.LENGTH_SHORT).show()
                 runProject(listBlocks)
             }
-
-
         }
         return true
     }
@@ -384,7 +385,7 @@ class ActivityHandler:AppCompatActivity(){
                 listBlocks[i].errorType = ok()
                 blocksHandler.notifyItemChanged(i)
             }
-            listBlocks[i].activity = this
+            //listBlocks[i].activity = this
 
         }
         if (!connectionBlocks()) {

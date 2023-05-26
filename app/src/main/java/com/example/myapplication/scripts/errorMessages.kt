@@ -2,15 +2,13 @@ package com.example.myapplication.scripts
 
 var ok = fun(): String { return "OK" }
 var emptyInput = fun(): String { return "Empty Input" }
-var inputError = fun(): String { return "InputError" }
 var memoryLimit = fun(): String { return "Memory limit" }
 var negativeRoot = fun(): String { return "Root of a negative number" }
 var zeroDivision = fun(): String { return "Division by zero" }
 var indexOutOfRange = fun(): String { return "Index out of range" }
 var incorrectExpression = fun(): String { return "Incorrect expression" }
 var invalidComparator = fun(): String { return "Invalid comparator" }
-var sizesMismatch = fun(): String { return "Sizes mismatch" }
-var variableAssignSequence = fun(): String { return "Impossible to assign sequence to variable" }
+
 
 
 var unexpectedSymbol = fun(operand: String): String { return "Unexpected symbol '$operand'" }

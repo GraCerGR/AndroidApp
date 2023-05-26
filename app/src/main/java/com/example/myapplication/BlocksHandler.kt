@@ -11,30 +11,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.scripts.Block
 
 class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adapter<BlocksHandler.ViewHolder>() {
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
         val textType: TextView = itemView.findViewById(R.id.textType)
         val textStatus: TextView = itemView.findViewById(R.id.textStatus)
         val spinnerComparator: Spinner = itemView.findViewById(R.id.spinnerComparator)
         val editLeft: EditText = itemView.findViewById(R.id.editLeft)
-        val editRight: EditText = itemView.findViewById(R.id.editRight)
         val editMedium : EditText = itemView.findViewById(R.id.editMedium)
+        val editRight: EditText = itemView.findViewById(R.id.editRight)
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(viewType, parent, false)
-        return ViewHolder(view)
-    }
-
 
     override fun getItemViewType(position: Int): Int {
         val viewType = when(listBlocks[position].type){
             "EntryPoint" -> R.layout.start_point_block
-            //"UndefinedVariable" -> R.layout.undefined_block
             "Assignment" -> R.layout.assignment_block
             "ConditionIf" -> R.layout.if_block
-            "ConsoleOutput" -> R.layout.console_output
-            "ConsoleInput" -> R.layout.console_input
+            "ConsoleOutput" -> R.layout.output_block
             "Begin" -> R.layout.begin_block
             "End" -> R.layout.end_block
             else -> R.layout.definition_block
@@ -42,8 +33,10 @@ class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adap
         return viewType;
     }
 
-    override fun getItemCount(): Int {
-        return listBlocks.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(viewType, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -76,10 +69,15 @@ class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adap
 
         holder.textType.text = listBlocks[position].type
         holder.textStatus.text = listBlocks[position].errorType
+
         holder.editLeft.setText(listBlocks[position].inputLeftEdit)
         holder.editMedium.setText(listBlocks[position].inputMediumEdit)
         holder.spinnerComparator.setSelection(listBlocks[position].indexComparator)
         holder.editRight.setText(listBlocks[position].inputRightEdit)
+    }
+
+    override fun getItemCount(): Int {
+        return listBlocks.size
     }
 
     fun addBlock(block : Block){
@@ -90,8 +88,10 @@ class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adap
     fun saveAllData(){
         for (i in 0 until listBlocks.size){
             listBlocks[i].inputLeftEdit =  listBlocks[i].holder.editLeft.text.toString()
+            listBlocks[i].inputMediumEdit =  listBlocks[i].holder.editMedium.text.toString()
             listBlocks[i].inputRightEdit =  listBlocks[i].holder.editRight.text.toString()
+            listBlocks[i].inputComparator =  listBlocks[i].holder.spinnerComparator.selectedItem.toString()
+            listBlocks[i].indexComparator = listBlocks[i].holder.spinnerComparator.selectedItemId.toInt()
         }
     }
-
 }
