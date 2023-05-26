@@ -5,14 +5,8 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/image"
     tools:context=".Main">
-
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/image" />
 
     <TextView
         android:id="@+id/BeginningText"
@@ -65,28 +59,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ScrollView
-            android:id="@+id/scrollcons"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/blocksRV"
             android:layout_width="match_parent"
-            android:layout_height="661dp"
-            android:layout_marginStart="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="75dp"
             app:layout_constraintBottom_toTopOf="@+id/Calculate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            tools:layout_editor_absoluteX="164dp">
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/blocksRV"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-
-        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -101,21 +84,21 @@
             android:id="@+id/textConsole"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_marginTop="300dp"
-            android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:text="Console"
+            android:layout_marginBottom="200dp"
+            android:layout_gravity="center|bottom"
+            android:text="@string/console"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:orientation="horizontal"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_gravity="bottom"
             android:background="@color/black"
+            android:layout_margin="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">

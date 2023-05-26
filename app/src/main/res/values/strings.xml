@@ -13,6 +13,7 @@
     <string name="end">Конец</string>
     <string name="menu_run" />
     <string name="integer"> Integer</string>
+    <string name="console"> Консоль</string>
 
     <string-array name="thins">
         <item>></item>

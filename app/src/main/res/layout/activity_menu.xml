@@ -4,16 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/image"
     tools:context=".Menu">
 
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/image"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="285dp" />
+
 
     <Button
         android:id="@+id/BeginProgram"
