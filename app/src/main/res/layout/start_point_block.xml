@@ -108,7 +108,6 @@
             android:layout_width="137dp"
             android:layout_height="48dp"
             android:ems="10"
-            android:hint="@string/size"
             android:inputType="textPersonName"
             android:textColor="@color/black"
             android:visibility="gone"

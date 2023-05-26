@@ -4,16 +4,21 @@
     <string name="type">Тип</string>
     <string name="name">Название</string>
     <string name="value">Значение</string>
-    <string name="size">Размер</string>
     <string name="variable">Переменная</string>
-    <string name="assignment">Присваивание</string>
     <string name="expression1">Выражение №1</string>
     <string name="expression2">Выражение №2</string>
     <string name="begin">Начало</string>
     <string name="end">Конец</string>
     <string name="menu_run" />
-    <string name="integer"> Integer</string>
-    <string name="console"> Консоль</string>
+    <string name="integer">Integer</string>
+    <string name="console">Консоль</string>
+    <string name="outputtext">Выводимый текс</string>
+    <string name="inputtext">Выводимый текс</string>
+    <string name="assignmentName">Присваивание</string>
+    <string name="definitionName">Определение</string>
+    <string name="ifName">Условие</string>
+    <string name="inputName">Ввод</string>
+    <string name="outputName">Вывод</string>
 
     <string-array name="thins">
         <item>></item>
@@ -21,5 +26,19 @@
         <item>==</item>
         <item>!=</item>
     </string-array>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 </resources>

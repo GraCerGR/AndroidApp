@@ -8,6 +8,16 @@
     android:layout_margin="5dp"
     android:background="@drawable/rounded_corner_if">
 
+    <TextView
+        android:layout_width="177dp"
+        android:layout_height="23dp"
+        android:text="Условие"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
         android:id="@+id/editMedium"
         android:layout_width="137dp"

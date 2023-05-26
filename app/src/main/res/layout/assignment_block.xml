@@ -15,6 +15,14 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="34dp">
 
+        <TextView
+            android:layout_width="177dp"
+            android:layout_height="23dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/assignmentName"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+
         <Spinner
             android:id="@+id/spinnerComparator"
             android:layout_width="94dp"
@@ -59,7 +67,8 @@
             android:gravity="center"
             android:text="@string/variable"
             android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/textType"
@@ -76,7 +85,8 @@
             android:gravity="center"
             android:text="@string/variable"
             android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/editLeft"

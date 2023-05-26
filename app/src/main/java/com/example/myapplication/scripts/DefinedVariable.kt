@@ -13,7 +13,7 @@ class DefinedVariable : Block() {
     private var inputName: String = ""
 
     init {
-        type = "DefinedVariable"
+        type = "Defination"
     }
 
     override fun initVar() {
