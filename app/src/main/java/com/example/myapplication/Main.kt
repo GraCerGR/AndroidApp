@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.ActivityMenuBinding
-import com.example.myapplication.databinding.ActivityProjectBinding
+
 import com.example.myapplication.scripts.Assigneing
 import com.example.myapplication.scripts.Begin
 import com.example.myapplication.scripts.Block
