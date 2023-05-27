@@ -16,11 +16,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.databinding.ActivityMenuBinding
-
 import com.example.myapplication.scripts.Assigneing
 import com.example.myapplication.scripts.Begin
 import com.example.myapplication.scripts.Block
@@ -37,10 +33,6 @@ import com.example.myapplication.scripts.programFinish
 
 
 class Main : AppCompatActivity() {
-
-    private lateinit var container: RecyclerView
-
-    //private lateinit var adapter: UniversalAdapter
     lateinit var bindingClass: ActivityMainBinding
     lateinit var beginningText: TextView
     private lateinit var listBlocks: ArrayList<Block>
@@ -50,28 +42,6 @@ class Main : AppCompatActivity() {
     lateinit var mainHandler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        /*
-        beginningText = findViewById(R.id.BeginningText) // Инициализация beginningText
-
-        container = findViewById<RecyclerView>(R.id.blocksRV)
-        container.layoutManager = LinearLayoutManager(this)
-
-        adapter = UniversalAdapter()
-        adapter.setBeginningText(beginningText) // Передаем ссылку на beginningText в адаптер
-        container.adapter = adapter
-
-        adapter.updateBeginningTextVisibility()
-
-        val navigationView = findViewById<com.google.android.material.navigation.NavigationView>(R.id.navigationView)
-        val drawerLayout = findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawer) // Получение ссылки на DrawerLayout
-
-        val assignmentButton = findViewById<Button>(R.id.Assignment)
-        val definitionButton = findViewById<Button>(R.id.Definition)
-        val ifButton = findViewById<Button>(R.id.If)
-        val beginButton = findViewById<Button>(R.id.Begin)
-        val endButton = findViewById<Button>(R.id.End)
-        val outputButton = findViewById<Button>(R.id.Output)
-*/
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -79,7 +49,7 @@ class Main : AppCompatActivity() {
         setContentView(bindingClass.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "RUUUUUUUUUUUUUUUUN"
+        supportActionBar?.title = "Menu"
         bindingClass.blocksRV.isDrawingCacheEnabled = true
         bindingClass.blocksRV.setItemViewCacheSize(100)
 
@@ -303,14 +273,12 @@ class Main : AppCompatActivity() {
                 consoleAdapter.addMessage("В строке $i ожидался End")
                 return Pair(0, 0)
             }
-            if (listBlocks[i].type == "ConditionIf" ||
-                listBlocks[i].type == "ConditionIfElse" ||
-                listBlocks[i].type == "CycleWhile"
+            if (listBlocks[i].type == "ConditionIf"
             ) {
-                val temp = if (listBlocks[i].type == "ConditionIfElse")
-                    connectionIfElse(i)
+                val temp = if (listBlocks[i].type == "ConditionIf")
+                    connectionIf(i)
                 else
-                    connectionIfOrWhile(i)
+                    continue
 
                 if (temp == 0)
                     return Pair(0, 0)
@@ -334,35 +302,7 @@ class Main : AppCompatActivity() {
         return Pair(i, 0)
     }
 
-    private fun connectionIfElse(index: Int): Int {
-        var i = index + 1
-        if (listBlocks[i].type == "Begin") {
-            i += 1
-            if (listBlocks[i].type != "End") {
-                connectBlocks(listBlocks[index].begin, listBlocks[i])
-                val (j, temp) = connectionInBlock(i)
-                if (j == 0)
-                    return 0
-                else if (listBlocks[temp].type == "End") {
-                    connectBlocks(listBlocks[j], listBlocks[index].end)
-                    i = temp + 1
-                } else {
-                    connectBlocks(listBlocks[j], listBlocks[index].end)
-                    i = j + 2
-                }
-            } else {
-                connectBlocks(listBlocks[index].begin, listBlocks[index].end)
-                i += 1
-            }
-            consoleAdapter.addMessage("В строке $i ожидался Else")
-            return 0
-        } else {
-            consoleAdapter.addMessage("В строке $i ожидался Begin")
-            return 0
-        }
-    }
-
-    private fun connectionIfOrWhile(index: Int): Int {
+    private fun connectionIf(index: Int): Int {
         var i = index + 1
         if (listBlocks[i].type == "Begin") {
             i += 1
@@ -398,15 +338,13 @@ class Main : AppCompatActivity() {
             } else if (listBlocks[i].type == "Else") {
                 consoleAdapter.addMessage("Обнаружен не к месту Else в строке $i")
                 return false
-            } else if (listBlocks[i].type == "ConditionIf" ||
-                listBlocks[i].type == "ConditionIfElse" ||
-                listBlocks[i].type == "CycleWhile"
+            } else if (listBlocks[i].type == "ConditionIf"
             ) {
 
-                val temp = if (listBlocks[i].type == "ConditionIfElse")
-                    connectionIfElse(i)
+                val temp = if (listBlocks[i].type == "ConditionIf")
+                    connectionIf(i)
                 else
-                    connectionIfOrWhile(i)
+                    continue
 
                 if (temp == 0) return false
                 else {
