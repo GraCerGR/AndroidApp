@@ -1,7 +1,6 @@
 package com.example.myapplication.scripts
 
-import android.content.Context
-
+// begin block for if condition
 class Begin : Block() {
     init {
         type = "Begin"

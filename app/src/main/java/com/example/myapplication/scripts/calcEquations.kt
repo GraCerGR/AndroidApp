@@ -4,6 +4,7 @@ import java.util.EmptyStackException
 import java.util.Stack
 import kotlin.math.pow
 
+// code for calculating arithmetics, checking input and using RPN
 fun arithmetics(mem: Memory, expression: String): Pair<String, Int> {
     val exp = expression.replace("\\s".toRegex(), "")
     if (exp.isEmpty()) {
@@ -37,11 +38,13 @@ private fun expressionToRPN(expression: String): String {
                 }
                 stack.push(expression[i])
             }
+
             -1 -> {
                 current += " "
                 while (getPriority(stack.peek()) != 1) current += stack.pop()
                 stack.pop()
             }
+
             else -> {
                 return "Error"
             }
@@ -85,6 +88,7 @@ private fun rpnToAns(rpn: String): Pair<String, Int> {
                         }
                         stack.push(result.toInt())
                     }
+
                     '#' -> {
                         val step = 1 / a.toDouble()
                         val result = b.toDouble().pow(step).toLong()
@@ -97,6 +101,7 @@ private fun rpnToAns(rpn: String): Pair<String, Int> {
                         }
                         stack.push(result.toInt())
                     }
+
                     '+' -> stack.push(b + a)
                     '-' -> stack.push(b - a)
                     '*' -> stack.push(b * a)
@@ -107,6 +112,7 @@ private fun rpnToAns(rpn: String): Pair<String, Int> {
                             return Pair(zeroDivision(), 0)
                         }
                     }
+
                     '%' -> {
                         try {
                             stack.push(b % a)
@@ -114,6 +120,7 @@ private fun rpnToAns(rpn: String): Pair<String, Int> {
                             return Pair(zeroDivision(), 0)
                         }
                     }
+
                     else -> {
                         return Pair(unexpectedSymbol(rpn[i].toString()), 0)
                     }

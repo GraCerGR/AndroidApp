@@ -1,15 +1,13 @@
 package com.example.myapplication.scripts
 
 class Memory {
-    private var hashTable : MutableMap<String, Int> = mutableMapOf()
+    private var hashTable: MutableMap<String, Int> = mutableMapOf()
 
     /**
      * creat a var with value 0
      **/
-    fun createDefaultVariables(names: List<String>) {
-        for (name: String in names) {
-            hashTable[name] = 0
-        }
+    fun createDefaultVariable(name: String) {
+        hashTable[name] = 0
     }
 
     /**

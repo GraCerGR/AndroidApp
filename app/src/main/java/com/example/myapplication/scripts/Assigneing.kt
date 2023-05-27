@@ -1,7 +1,6 @@
 package com.example.myapplication.scripts
 
-import android.content.Context
-
+// block for assigning values to variables
 class Assigneing : Block() {
 
     private var value: Int = 0
@@ -21,20 +20,20 @@ class Assigneing : Block() {
     override fun executeBlock() {
         super.executeBlock()
         initVar()
-        // Определяем, что за объект, которому мы будем присваивать
+
         val obj = defineInput(mem, inputName)
         name = obj.second
-        // Отсеиваем ненужное
-        if (obj.first !in listOf(tagArray(), tagVariable())) {
+        // check the initialization
+        if (obj.first !in tagVariable()) {
             errorType = obj.first
             return
         }
-        // Высчитываем, что будем присваивать
+        // calculate the expressions
         val calculated = arithmetics(mem, inputValue)
         errorType = calculated.first
         if (calculated.first != ok()) return
         value = calculated.second
-        // Присваеваем высчитанное значение либо переменной, либо элементу массива
+        // assign the value
         when (obj.first) {
             tagVariable() -> {
                 mem.setVariableValue(name, value)

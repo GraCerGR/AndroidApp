@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">Codeblock</string>
-    <string name="status">Статус</string>
+    <string name="app_name">CodeBlock</string>
+    <string name="status">State</string>
     <string name="type">Тип</string>
     <string name="name">Название</string>
     <string name="value">Значение</string>
+    <string name="size">Размер</string>
     <string name="variable">Переменная</string>
+    <string name="assignment">Присваивание</string>
     <string name="expression1">Выражение №1</string>
     <string name="expression2">Выражение №2</string>
     <string name="begin">Начало</string>
@@ -19,7 +21,9 @@
     <string name="ifName">Условие</string>
     <string name="inputName">Ввод</string>
     <string name="outputName">Вывод</string>
-
+    <string name="inputVariable">Variable for Input</string>
+    <string name="message">"Message"</string>
+    <string name="outputVariable">Variable for Output</string>
     <string-array name="thins">
         <item>></item>
         <item>>=</item>
@@ -40,5 +44,6 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
 
 </resources>
