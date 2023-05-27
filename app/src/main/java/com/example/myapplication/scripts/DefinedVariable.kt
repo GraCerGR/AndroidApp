@@ -2,10 +2,7 @@ package com.example.myapplication.scripts
 
 import android.content.Context
 
-/**
- *  Блок определенной переменной.
- *  Позволяет объявить переменную и установить ей значение.
- **/
+// block for defining variables with or without a value
 class DefinedVariable : Block() {
     private var value: Int = 0
     private var name: String = ""
@@ -23,21 +20,25 @@ class DefinedVariable : Block() {
 
     override fun executeBlock() {
         super.executeBlock()
-        // Инициализируем поля из ввода
+        // add the name and value in the object
         initVar()
 
-        // Отлавливаем неправильное название
+        // if the variable is not given a value
+        if (inputValue == "") mem.createDefaultVariable(inputName)
+
+        // checking if the name invalid
         if (!variableCheck(inputName)) {
             errorType = incorrectNaming(inputName)
             return
         }
 
 
-        // Высчитываем значение для переменной
+        // calculating the value of the expression
         val calculated = arithmetics(mem, inputValue)
         errorType = calculated.first
         name = inputName
-        // Присваиваем переменной значение
+
+        // assign value to variable
         if (calculated.first == ok()) {
             value = calculated.second
             mem.setVariableValue(name, value)

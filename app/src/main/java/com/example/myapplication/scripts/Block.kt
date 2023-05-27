@@ -6,6 +6,7 @@ import com.example.myapplication.ConsoleHandler
 import com.example.myapplication.Main
 import java.util.Stack
 
+// block class
 open class Block() {
     companion object {
         var callStack: Stack<Block> = Stack()

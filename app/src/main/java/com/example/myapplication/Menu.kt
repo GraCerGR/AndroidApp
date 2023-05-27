@@ -33,17 +33,3 @@ class Menu : AppCompatActivity() {
         }
     }
 }
-/*
-        var buttonProgramming = findViewById<Button>(R.id.BeginProgram)
-        buttonProgramming.setOnClickListener {
-            val menuIntent = Intent(this, ActivityHandler::class.java)
-            startActivity(menuIntent)
-        }
-
-        var buttonSettings = findViewById<Button>(R.id.Settings)
-        buttonSettings.setOnClickListener {
-            val settingsIntent = Intent(this, Settings::class.java)
-            startActivity(settingsIntent)
-        }
-    }
-*/

@@ -1,11 +1,6 @@
 package com.example.myapplication.scripts
 
-import android.content.Context
-
-/**
- *  Блок условия If.
- *  Позволяет выполнять определенный набор команд при выполнении условия.
- **/
+// if condetion block
 class ConditionIf : Block() {
     private var expressionLeft: String = ""
     private var expressionRight: String = ""
@@ -24,16 +19,16 @@ class ConditionIf : Block() {
         end.adapterConsole = adapterConsole
         exit = Exit()
         exit.adapterConsole = adapterConsole
+
         begin.adapterBlocks = this.adapterBlocks
         end.adapterBlocks = this.adapterBlocks
         exit.adapterBlocks = this.adapterBlocks
-        flagInit = false
     }
 
     override fun executeBlock() {
         super.executeBlock()
-        // Выполняем initVar() единожды
-        if (flagInit) initVar()
+        initVar()
+
         // Соединяем блок конца при выполнении условия с выходом - блоком которым соединен if блок
         connectBlocks(end, exit, clear = false)
 

@@ -10,18 +10,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.scripts.Block
 
-class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adapter<BlocksHandler.ViewHolder>() {
-    class ViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView) {
+class BlocksHandler(private val listBlocks: ArrayList<Block>) :
+    RecyclerView.Adapter<BlocksHandler.ViewHolder>() {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textType: TextView = itemView.findViewById(R.id.textType)
         val textStatus: TextView = itemView.findViewById(R.id.textStatus)
         val spinnerComparator: Spinner = itemView.findViewById(R.id.spinnerComparator)
         val editLeft: EditText = itemView.findViewById(R.id.editLeft)
-        val editMedium : EditText = itemView.findViewById(R.id.editMedium)
+        val editMedium: EditText = itemView.findViewById(R.id.editMedium)
         val editRight: EditText = itemView.findViewById(R.id.editRight)
     }
 
     override fun getItemViewType(position: Int): Int {
-        val viewType = when(listBlocks[position].type){
+        val viewType = when (listBlocks[position].type) {
             "EntryPoint" -> R.layout.start_point_block
             "Assignment" -> R.layout.assignment_block
             "ConditionIf" -> R.layout.if_block
@@ -42,8 +43,9 @@ class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         listBlocks[position].holder = holder
-        if (listBlocks[position].type == "EntryPoint" || listBlocks[position].type== "Begin" ||
-            listBlocks[position].type == "End" || listBlocks[position].type == "Else"){
+        if (listBlocks[position].type == "EntryPoint" || listBlocks[position].type == "Begin" ||
+            listBlocks[position].type == "End"
+        ) {
             return
         }
         holder.editMedium.setOnEditorActionListener { _, actionId, _ ->
@@ -70,7 +72,6 @@ class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adap
 
         holder.textType.text = listBlocks[position].type
         holder.textStatus.text = listBlocks[position].errorType
-
         holder.editLeft.setText(listBlocks[position].inputLeftEdit)
         holder.editMedium.setText(listBlocks[position].inputMediumEdit)
         holder.spinnerComparator.setSelection(listBlocks[position].indexComparator)
@@ -81,18 +82,20 @@ class BlocksHandler(private val listBlocks:ArrayList<Block>) : RecyclerView.Adap
         return listBlocks.size
     }
 
-    fun addBlock(block : Block){
+    fun addBlock(block: Block) {
         listBlocks.add(block)
-        notifyItemInserted(listBlocks.size-1)
+        notifyItemInserted(listBlocks.size - 1)
     }
 
-    fun saveAllData(){
-        for (i in 0 until listBlocks.size){
-            listBlocks[i].inputLeftEdit =  listBlocks[i].holder.editLeft.text.toString()
-            listBlocks[i].inputMediumEdit =  listBlocks[i].holder.editMedium.text.toString()
-            listBlocks[i].inputRightEdit =  listBlocks[i].holder.editRight.text.toString()
-            listBlocks[i].inputComparator =  listBlocks[i].holder.spinnerComparator.selectedItem.toString()
-            listBlocks[i].indexComparator = listBlocks[i].holder.spinnerComparator.selectedItemId.toInt()
+    fun saveAllData() {
+        for (i in 0 until listBlocks.size) {
+            listBlocks[i].inputLeftEdit = listBlocks[i].holder.editLeft.text.toString()
+            listBlocks[i].inputMediumEdit = listBlocks[i].holder.editMedium.text.toString()
+            listBlocks[i].inputRightEdit = listBlocks[i].holder.editRight.text.toString()
+            listBlocks[i].inputComparator =
+                listBlocks[i].holder.spinnerComparator.selectedItem.toString()
+            listBlocks[i].indexComparator =
+                listBlocks[i].holder.spinnerComparator.selectedItemId.toInt()
         }
     }
 }

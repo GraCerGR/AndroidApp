@@ -1,12 +1,9 @@
 package com.example.myapplication.scripts
 
-import android.app.Activity
 import android.content.Context
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.Main
-import com.example.myapplication.databinding.ActivityMainBinding
 
+// block for showing messages in the console
 class ConsoleOutput : Block() {
     private var message: String = ""
     private var expression: String = ""
@@ -23,12 +20,14 @@ class ConsoleOutput : Block() {
     override fun executeBlock() {
         super.executeBlock()
         initVar()
-        val context: Context = AppCompatActivity()
+
+        // output the message if no expression
         if (expression == "") {
             adapterConsole.addMessage(message)
             return
         }
 
+        // check the expression
         val calculated = arithmetics(mem, expression)
         errorType = calculated.first
         if (calculated.first != ok()) return

@@ -1,10 +1,6 @@
 package com.example.myapplication.scripts
 
-import android.content.Context
-
-/**
- *  Служебный блок.
- **/
+// a block to finish if statement
 class Exit : Block() {
     init {
         type = "Exit"

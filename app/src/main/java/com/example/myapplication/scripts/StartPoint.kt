@@ -1,17 +1,15 @@
 package com.example.myapplication.scripts
 
-import android.content.Context
 
-/**
- *  Точка входа в программу.
- **/
-class EntryPoint : Block() {
+//the starting block for the program
+class StartPoint : Block() {
     init {
         type = "EntryPoint"
     }
 
     override fun executeBlock() {
-        // Очищаем все с прошлых запусков, вывадим сообщение о старте
+        //show start message in console and delete any left over variables
+
         adapterConsole.addMessage(programStart())
         mem.clearVariables()
 
@@ -19,7 +17,7 @@ class EntryPoint : Block() {
 
     override fun kickRunning() {
         super.kickRunning()
-        // Пока поднят флаг работы и стак непустой, выполняем крайний блок
+        // keep the staring block while the program is running
         if (!isProgramRunning) return
         if (callStack.empty()) return
         callStack.pop().run()

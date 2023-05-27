@@ -1,8 +1,6 @@
 package com.example.myapplication.scripts
 
-import android.content.Context
-
-
+// end block in if statement
 class End : Block() {
     init {
         type = "End"
